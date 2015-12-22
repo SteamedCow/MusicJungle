@@ -1,4 +1,4 @@
-package musicjungle.gui.game;
+package musicjungle.game.gui;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
 

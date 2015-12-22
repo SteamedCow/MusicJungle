@@ -1,7 +1,7 @@
 package musicjungle;
-
 import javax.swing.JFrame;
-import musicjungle.gui.game.GameController;
+import musicjungle.fileHandler.gui.FileHandlerController;
+import musicjungle.game.gui.GameController;
 
 /**
  * MusicJungle
@@ -10,9 +10,10 @@ import musicjungle.gui.game.GameController;
  */
 public class MusicJungle 
 {
-    public static void main(String[] args) {
+    public static void main(String[] args) {        
         JFrame frame = new JFrame("TEMP");
-        GameController controller = new GameController(4, 10);
+//        GameController controller = new GameController(4, 10);
+        FileHandlerController controller = new FileHandlerController();
         
         frame.setSize(500, 500);
         frame.setLocationRelativeTo(null);
@@ -20,6 +21,6 @@ public class MusicJungle
         frame.setContentPane(controller.getPanel());
         frame.setVisible(true);
         
-        GameController.startRound();
+//        GameController.startRound();
     }
 }

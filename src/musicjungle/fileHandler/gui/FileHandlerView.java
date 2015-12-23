@@ -1,6 +1,6 @@
 package musicjungle.fileHandler.gui;
-
 import java.awt.event.ActionListener;
+import musicjungle.data.CodingConstants;
 
 /**
  * FileHandlerView
@@ -9,12 +9,69 @@ import java.awt.event.ActionListener;
  */
 public class FileHandlerView extends javax.swing.JPanel 
 {
-    public FileHandlerView() {
+    protected FileHandlerView() {
         initComponents();
+        
+        jButtonBrowse.setActionCommand(CodingConstants.BROWSE_BUTTON_AC);
+        jButtonAdd.setActionCommand(CodingConstants.ADD_BUTTON_AC);
+        jButtonCancel.setActionCommand(CodingConstants.CANCEL_BUTTON_AC);
     }
     
-    protected void addBrowserListener(ActionListener listener) {
+    protected void addButtonListener(ActionListener listener) {
         jButtonBrowse.addActionListener(listener);
+        jButtonAdd.addActionListener(listener);
+        jButtonCancel.addActionListener(listener);
+    }
+    
+    protected void setFilepath(String path) {
+        jTextFieldFilePathInput.setText(path);
+    }
+    
+    protected String getFilepath() {
+        return jTextFieldFilePathInput.getText();
+    }
+    
+    protected void setFileName(String fileName) {
+        jTextFieldFileNameInput.setText(fileName);
+    }
+    
+    protected String getFileName() {
+        return jTextFieldFileNameInput.getText();
+    }
+    
+    protected void setSongTitle(String title) {
+        jTextFieldSongTitleInput.setText(title);
+        jTextFieldSongTitleInput.enable(true);
+    }
+    
+    protected String getSongTitle() {
+        return jTextFieldSongTitleInput.getText();
+    }
+    
+    protected void setArtist(String artist) {
+        jTextFieldArtistInput.setText(artist);
+        jTextFieldArtistInput.enable(true);
+    }
+    
+    protected String getArtist() {
+        return jTextFieldArtistInput.getText();
+    }
+    
+    protected void setAlbum(String album) {
+        jTextFieldAlbumInput.setText(album);
+        jTextFieldAlbumInput.enable(true);
+    }
+    
+    protected String getAlbum() {
+        return jTextFieldAlbumInput.getText();
+    }
+    
+    protected void setDuration(String duration) {
+        jTextFieldDurationInput.setText(duration);
+    }
+    
+    protected String getDuration() {
+        return jTextFieldDurationInput.getText();
     }
 
     @SuppressWarnings("unchecked")
@@ -31,6 +88,13 @@ public class FileHandlerView extends javax.swing.JPanel
         jTextFieldArtistInput = new javax.swing.JTextField();
         jLabelAlbumTitle = new javax.swing.JLabel();
         jTextFieldAlbumInput = new javax.swing.JTextField();
+        jLabelFileTitle = new javax.swing.JLabel();
+        jTextFieldFileNameInput = new javax.swing.JTextField();
+        jLabelDurationTitle = new javax.swing.JLabel();
+        jTextFieldDurationInput = new javax.swing.JTextField();
+        jLabelDurationPostfex = new javax.swing.JLabel();
+        jButtonAdd = new javax.swing.JButton();
+        jButtonCancel = new javax.swing.JButton();
 
         jLabelTitle.setText("Add Song");
 
@@ -40,7 +104,7 @@ public class FileHandlerView extends javax.swing.JPanel
 
         jButtonBrowse.setText("Browse");
 
-        jLabelSongTitleTitle.setText("Title");
+        jLabelSongTitleTitle.setText("Song Title");
 
         jTextFieldSongTitleInput.setEnabled(false);
 
@@ -52,6 +116,20 @@ public class FileHandlerView extends javax.swing.JPanel
 
         jTextFieldAlbumInput.setEnabled(false);
 
+        jLabelFileTitle.setText("File Name");
+
+        jTextFieldFileNameInput.setEditable(false);
+
+        jLabelDurationTitle.setText("Duration");
+
+        jTextFieldDurationInput.setEditable(false);
+
+        jLabelDurationPostfex.setText("s");
+
+        jButtonAdd.setText("Add");
+
+        jButtonCancel.setText("Cancel");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -59,74 +137,107 @@ public class FileHandlerView extends javax.swing.JPanel
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jTextFieldFilePathInput)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButtonBrowse))
-                                    .addComponent(jTextFieldSongTitleInput)))
+                                    .addComponent(jLabelSongTitleTitle)
+                                    .addComponent(jLabelAlbumTitle))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldSongTitleInput)
+                                    .addComponent(jTextFieldAlbumInput)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelFileTitle)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldFileNameInput))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelArtistTitle)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldArtistInput))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelTitle)
-                                    .addComponent(jLabelFilePathTitle)
-                                    .addComponent(jLabelSongTitleTitle)
-                                    .addComponent(jLabelArtistTitle))
-                                .addGap(0, 289, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jTextFieldArtistInput))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelFilePathTitle))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jTextFieldAlbumInput))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelAlbumTitle)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addComponent(jTextFieldFilePathInput)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonBrowse))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelDurationTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldDurationInput)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelDurationPostfex))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                        .addComponent(jButtonCancel)))
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabelAlbumTitle, jLabelArtistTitle, jLabelDurationTitle, jLabelFileTitle, jLabelSongTitleTitle});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonBrowse)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelTitle)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelFilePathTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldFilePathInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jLabelTitle)
                 .addGap(18, 18, 18)
-                .addComponent(jLabelSongTitleTitle)
+                .addComponent(jLabelFilePathTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldSongTitleInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldFilePathInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBrowse))
                 .addGap(18, 18, 18)
-                .addComponent(jLabelArtistTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldArtistInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelFileTitle)
+                    .addComponent(jTextFieldFileNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabelAlbumTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldAlbumInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSongTitleTitle)
+                    .addComponent(jTextFieldSongTitleInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelArtistTitle)
+                    .addComponent(jTextFieldArtistInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAlbumTitle)
+                    .addComponent(jTextFieldAlbumInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelDurationTitle)
+                    .addComponent(jTextFieldDurationInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelDurationPostfex))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAdd)
+                    .addComponent(jButtonCancel))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButtonBrowse;
+    private javax.swing.JButton jButtonCancel;
     private javax.swing.JLabel jLabelAlbumTitle;
     private javax.swing.JLabel jLabelArtistTitle;
+    private javax.swing.JLabel jLabelDurationPostfex;
+    private javax.swing.JLabel jLabelDurationTitle;
     private javax.swing.JLabel jLabelFilePathTitle;
+    private javax.swing.JLabel jLabelFileTitle;
     private javax.swing.JLabel jLabelSongTitleTitle;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JTextField jTextFieldAlbumInput;
     private javax.swing.JTextField jTextFieldArtistInput;
+    private javax.swing.JTextField jTextFieldDurationInput;
+    private javax.swing.JTextField jTextFieldFileNameInput;
     private javax.swing.JTextField jTextFieldFilePathInput;
     private javax.swing.JTextField jTextFieldSongTitleInput;
     // End of variables declaration//GEN-END:variables

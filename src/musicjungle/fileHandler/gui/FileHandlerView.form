@@ -18,47 +18,58 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jTextFieldFilePathInput" max="32767" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButtonBrowse" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jTextFieldSongTitleInput" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabelTitle" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelFilePathTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelSongTitleTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelArtistTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="289" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jTextFieldArtistInput" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Component id="jTextFieldAlbumInput" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabelSongTitleTitle" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelAlbumTitle" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jTextFieldSongTitleInput" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldAlbumInput" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabelFileTitle" linkSize="1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jTextFieldFileNameInput" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabelArtistTitle" linkSize="1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jTextFieldArtistInput" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="jLabelAlbumTitle" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabelTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelFilePathTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                              <Component id="jTextFieldFilePathInput" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButtonBrowse" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabelDurationTitle" linkSize="1" min="-2" pref="47" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jTextFieldDurationInput" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabelDurationPostfex" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonAdd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="127" max="32767" attributes="0"/>
+                      <Component id="jButtonCancel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -69,29 +80,46 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jButtonBrowse" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabelTitle" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabelFilePathTitle" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextFieldFilePathInput" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Component id="jLabelTitle" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jLabelFilePathTitle" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jTextFieldFilePathInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonBrowse" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabelSongTitleTitle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextFieldSongTitleInput" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelFileTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldFileNameInput" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabelArtistTitle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextFieldArtistInput" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelSongTitleTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldSongTitleInput" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabelAlbumTitle" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelArtistTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldArtistInput" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelAlbumTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldAlbumInput" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelDurationTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldDurationInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelDurationPostfex" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jButtonAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextFieldAlbumInput" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -119,7 +147,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelSongTitleTitle">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Title"/>
+        <Property name="text" type="java.lang.String" value="Song Title"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldSongTitleInput">
@@ -145,6 +173,41 @@
     <Component class="javax.swing.JTextField" name="jTextFieldAlbumInput">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelFileTitle">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="File Name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldFileNameInput">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelDurationTitle">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Duration"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldDurationInput">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelDurationPostfex">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="s"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonAdd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonCancel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancel"/>
       </Properties>
     </Component>
   </SubComponents>

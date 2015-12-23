@@ -1,7 +1,8 @@
 package musicjungle.fileHandler.gui;
 import java.io.File;
 import javax.swing.JPanel;
-import musicjungle.fileHandler.FileBrowserListener;
+import musicjungle.fileHandler.FileHandlerButtonListener;
+import musicjungle.models.Song;
 
 /**
  * FileHandlerController
@@ -16,7 +17,7 @@ public class FileHandlerController
     public FileHandlerController() {
         this.view = new FileHandlerView();
         
-        this.view.addBrowserListener(new FileBrowserListener());
+        this.view.addButtonListener(new FileHandlerButtonListener());
         
         FileHandlerController.model = new FileHandlerModel(view);
     }
@@ -27,5 +28,9 @@ public class FileHandlerController
     
     public static void setSelectedFile(File f) {
         model.setFile(f);
+    }
+    
+    public static Song getSong() {
+        return model.createSong();
     }
 }

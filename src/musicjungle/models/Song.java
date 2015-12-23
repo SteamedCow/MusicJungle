@@ -3,26 +3,24 @@ import java.io.File;
 
 /**
  * Song
- * @author Lasse
+ * @author SteamedCow
  * @version 23-12-2015
  */
 public class Song 
 {
     public final String title, artist, album, filepath;
     public final int duration;
-    private final File song;
 
-    public Song(String title, String artist, String album, String filepath, int duration, File song) {
+    public Song(String title, String artist, String album, String filepath, int duration) {
         this.title = title;
         this.artist = artist;
         this.album = album;
         this.filepath = filepath;
         this.duration = duration;
-        this.song = song;
     }
     
     public File getSong() {
-        return song;
+        return null;
     }
 
     @Override

@@ -3,8 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.JFileChooser;
-import musicjungle.data.CodingConstants;
-import musicjungle.data.GameData;
+import musicjungle.data.*;
 import musicjungle.fileHandler.gui.FileHandlerController;
 import musicjungle.models.Song;
 
@@ -49,13 +48,14 @@ public class FileHandlerButtonListener implements ActionListener
         GameData.songs.add(FileHandlerController.getSong());
         
         for (Song song : GameData.songs) {
+            GameData.musicPlayer.stop();
             System.out.println(song.toString());
         }
-        
     }
 
     private void cancel() {
         try {
+            GameData.musicPlayer.stop();
             throw new UnsupportedOperationException("Not supported yet.");
         } catch (UnsupportedOperationException e) {
             e.printStackTrace();

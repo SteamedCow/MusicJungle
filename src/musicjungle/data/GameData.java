@@ -1,6 +1,7 @@
 package musicjungle.data;
 import java.util.ArrayList;
 import musicjungle.models.Song;
+import musicjungle.musicPlayer.MP3Player;
 
 /**
  * GameData
@@ -10,4 +11,5 @@ import musicjungle.models.Song;
 public class GameData 
 {
     public static final ArrayList<Song> songs = new ArrayList();
+    public static final MP3Player musicPlayer = new MP3Player();
 }

@@ -31,7 +31,7 @@ public class FileHandlerModel
             view.setArtist(tag.getValue(FieldKey.ARTIST, 0));
             view.setAlbum(tag.getValue(FieldKey.ALBUM, 0));
             view.setDuration("" + audioFile.getAudioHeader().getTrackLength());
-            view.setBitRate(audioFile.getAudioHeader().getBitRate());
+            view.setBitRate("" + audioFile.getAudioHeader().getBitRateAsNumber());
             view.playButtonEnable(true);
         } catch (IOException | CannotReadException | InvalidAudioFrameException | ReadOnlyFileException | TagException ex) {
             ex.printStackTrace();

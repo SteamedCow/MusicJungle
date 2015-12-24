@@ -18,8 +18,7 @@ public class AudioFilter extends FileFilter
 
         final String extension = Utils.getFileExtension(f);
         if (extension != null) {
-            return  extension.equals("mp3") ||
-                    extension.equals("wav");
+            return  extension.equals("mp3");
         }
         else
             return false;
@@ -27,6 +26,6 @@ public class AudioFilter extends FileFilter
 
     @Override
     public String getDescription() {
-        return "Audio (*.mp3;*.wav)";
+        return "Audio (*.mp3)";
     }
 }

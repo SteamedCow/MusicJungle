@@ -13,12 +13,14 @@ public class FileHandlerView extends javax.swing.JPanel
         initComponents();
         
         jButtonBrowse.setActionCommand(CodingConstants.BROWSE_BUTTON_AC);
+        jButtonPlay.setActionCommand(CodingConstants.PLAY_MUSIC_BUTTON_AC);
         jButtonAdd.setActionCommand(CodingConstants.ADD_BUTTON_AC);
         jButtonCancel.setActionCommand(CodingConstants.CANCEL_BUTTON_AC);
     }
     
     protected void addButtonListener(ActionListener listener) {
         jButtonBrowse.addActionListener(listener);
+        jButtonPlay.addActionListener(listener);
         jButtonAdd.addActionListener(listener);
         jButtonCancel.addActionListener(listener);
     }
@@ -41,7 +43,6 @@ public class FileHandlerView extends javax.swing.JPanel
     
     protected void setSongTitle(String title) {
         jTextFieldSongTitleInput.setText(title);
-        jTextFieldSongTitleInput.enable(true);
     }
     
     protected String getSongTitle() {
@@ -50,7 +51,6 @@ public class FileHandlerView extends javax.swing.JPanel
     
     protected void setArtist(String artist) {
         jTextFieldArtistInput.setText(artist);
-        jTextFieldArtistInput.enable(true);
     }
     
     protected String getArtist() {
@@ -59,7 +59,6 @@ public class FileHandlerView extends javax.swing.JPanel
     
     protected void setAlbum(String album) {
         jTextFieldAlbumInput.setText(album);
-        jTextFieldAlbumInput.enable(true);
     }
     
     protected String getAlbum() {
@@ -72,6 +71,18 @@ public class FileHandlerView extends javax.swing.JPanel
     
     protected String getDuration() {
         return jTextFieldDurationInput.getText();
+    }
+    
+    protected void setBitRate(String bitRate) {
+        jTextFieldBitRateInput.setText(bitRate);
+    }
+    
+    protected String getBitRate() {
+        return jTextFieldBitRateInput.getText();
+    }
+    
+    protected void playButtonEnable(boolean enabled) {
+        jButtonPlay.setEnabled(enabled);
     }
 
     @SuppressWarnings("unchecked")
@@ -95,6 +106,9 @@ public class FileHandlerView extends javax.swing.JPanel
         jLabelDurationPostfex = new javax.swing.JLabel();
         jButtonAdd = new javax.swing.JButton();
         jButtonCancel = new javax.swing.JButton();
+        jLabelBitRateTitle = new javax.swing.JLabel();
+        jTextFieldBitRateInput = new javax.swing.JTextField();
+        jButtonPlay = new javax.swing.JButton();
 
         jLabelTitle.setText("Add Song");
 
@@ -106,15 +120,9 @@ public class FileHandlerView extends javax.swing.JPanel
 
         jLabelSongTitleTitle.setText("Song Title");
 
-        jTextFieldSongTitleInput.setEnabled(false);
-
         jLabelArtistTitle.setText("Artist");
 
-        jTextFieldArtistInput.setEnabled(false);
-
         jLabelAlbumTitle.setText("Album");
-
-        jTextFieldAlbumInput.setEnabled(false);
 
         jLabelFileTitle.setText("File Name");
 
@@ -129,6 +137,13 @@ public class FileHandlerView extends javax.swing.JPanel
         jButtonAdd.setText("Add");
 
         jButtonCancel.setText("Cancel");
+
+        jLabelBitRateTitle.setText("Bit Rate");
+
+        jTextFieldBitRateInput.setEditable(false);
+
+        jButtonPlay.setText("Play Song");
+        jButtonPlay.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -156,15 +171,17 @@ public class FileHandlerView extends javax.swing.JPanel
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldArtistInput))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelTitle)
-                                    .addComponent(jLabelFilePathTitle))
+                                .addComponent(jLabelFilePathTitle)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jTextFieldFilePathInput)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonBrowse))))
+                                .addComponent(jButtonBrowse))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelTitle)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonPlay))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabelDurationTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -176,17 +193,24 @@ public class FileHandlerView extends javax.swing.JPanel
                         .addContainerGap()
                         .addComponent(jButtonAdd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                        .addComponent(jButtonCancel)))
+                        .addComponent(jButtonCancel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelBitRateTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldBitRateInput)))
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabelAlbumTitle, jLabelArtistTitle, jLabelDurationTitle, jLabelFileTitle, jLabelSongTitleTitle});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabelAlbumTitle, jLabelArtistTitle, jLabelBitRateTitle, jLabelDurationTitle, jLabelFileTitle, jLabelSongTitleTitle});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelTitle)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelTitle)
+                    .addComponent(jButtonPlay))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelFilePathTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -214,7 +238,11 @@ public class FileHandlerView extends javax.swing.JPanel
                     .addComponent(jLabelDurationTitle)
                     .addComponent(jTextFieldDurationInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelDurationPostfex))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelBitRateTitle)
+                    .addComponent(jTextFieldBitRateInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAdd)
                     .addComponent(jButtonCancel))
@@ -226,8 +254,10 @@ public class FileHandlerView extends javax.swing.JPanel
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButtonBrowse;
     private javax.swing.JButton jButtonCancel;
+    private javax.swing.JButton jButtonPlay;
     private javax.swing.JLabel jLabelAlbumTitle;
     private javax.swing.JLabel jLabelArtistTitle;
+    private javax.swing.JLabel jLabelBitRateTitle;
     private javax.swing.JLabel jLabelDurationPostfex;
     private javax.swing.JLabel jLabelDurationTitle;
     private javax.swing.JLabel jLabelFilePathTitle;
@@ -236,6 +266,7 @@ public class FileHandlerView extends javax.swing.JPanel
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JTextField jTextFieldAlbumInput;
     private javax.swing.JTextField jTextFieldArtistInput;
+    private javax.swing.JTextField jTextFieldBitRateInput;
     private javax.swing.JTextField jTextFieldDurationInput;
     private javax.swing.JTextField jTextFieldFileNameInput;
     private javax.swing.JTextField jTextFieldFilePathInput;

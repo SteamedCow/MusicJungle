@@ -2,6 +2,7 @@ package musicjungle.musicPlayer;
 import java.io.*;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
+import musicjungle.models.Song;
 
 /**
  * MP3Player
@@ -12,9 +13,11 @@ public class MP3Player implements Runnable
 {
     private Player player;
     
-    public void play(File song) throws FileNotFoundException, JavaLayerException {
-        final FileInputStream fis = new FileInputStream(song);
+    public void play(Song song, int startTime) throws JavaLayerException, IOException {
+        final FileInputStream fis = new FileInputStream(song.filepath);
         final BufferedInputStream bis = new BufferedInputStream(fis);
+        final int skipBytes = song.bitRate / 8 * 1000 * startTime;
+        bis.skip(skipBytes);
         start(bis);
         
         Thread playMusic = new Thread(this);

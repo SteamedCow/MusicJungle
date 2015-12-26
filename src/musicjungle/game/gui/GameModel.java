@@ -1,6 +1,6 @@
 package musicjungle.game.gui;
-import javax.swing.JButton;
 import javax.swing.JProgressBar;
+import musicjungle.models.SongButton;
 
 /**
  * GameModel
@@ -11,7 +11,7 @@ public final class GameModel implements Runnable
 {
     private final GameView view;
     private final int roundTime;
-    private final JButton[] buttons;
+    private final SongButton[] buttons;
     private final JProgressBar timer;
     
     private int round = 0;
@@ -28,7 +28,7 @@ public final class GameModel implements Runnable
             bc = 2;
         else
             bc = buttonCount;
-        buttons = new JButton[bc];
+        buttons = new SongButton[bc];
         setButtons(bc);
         
         if(roundTime > 10000)
@@ -62,9 +62,9 @@ public final class GameModel implements Runnable
     }
     
     private void setButtons(int buttonCount) {
-        JButton button;
+        SongButton button;
         for (int i = 0; i < buttonCount; i++) {
-            button = new JButton();
+            button = new SongButton();
             button.setActionCommand("B" + i);
             
             view.addButton(button);

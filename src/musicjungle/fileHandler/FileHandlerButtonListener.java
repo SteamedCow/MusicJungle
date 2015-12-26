@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javazoom.jl.decoder.JavaLayerException;
 import musicjungle.data.*;
 import musicjungle.fileHandler.gui.FileHandlerController;
@@ -63,12 +64,21 @@ public class FileHandlerButtonListener implements ActionListener
     }
     
     private void add() {
-        GameData.songs.add(FileHandlerController.getSong());
+        GameData.musicPlayer.stop();
+        final Song addedSong = FileHandlerController.getSong();
+        boolean exsists = false;
         
         for (Song song : GameData.songs) {
-            GameData.musicPlayer.stop();
-            System.out.println(song.toString());
+            if(addedSong.weakEquals(song))
+                exsists = addedSong.weakEquals(song);
         }
+        
+        if(!exsists) {
+            System.out.println("\nADDED: " + addedSong);
+            GameData.songs.add(addedSong);
+        }
+        else
+            System.err.println("\nALREADY EXSISTS: " + addedSong);
     }
 
     private void cancel() {

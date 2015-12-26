@@ -1,5 +1,6 @@
 package musicjungle.models;
-import java.io.File;
+
+import java.util.Objects;
 
 /**
  * Song
@@ -19,13 +20,33 @@ public class Song
         this.duration = duration;
         this.bitRate = bitRate;
     }
-    
-    public File getSong() {
-        return null;
-    }
 
     @Override
     public String toString() {
         return "Song{" + "title=" + title + ", artist=" + artist + ", album=" + album + ", filepath=" + filepath + ", duration=" + duration + ", bitRate=" + bitRate + '}';
+    }
+
+    public boolean weakEquals(Object obj) {
+        if (obj == null || getClass() != obj.getClass()) 
+            return false;
+        final Song other = (Song) obj;
+        
+        if(!Objects.equals(this.filepath, other.filepath))
+            return false;
+        
+        return Objects.equals(this.title, other.title) &&
+                Objects.equals(this.album, other.album);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.title);
+        hash = 67 * hash + Objects.hashCode(this.artist);
+        hash = 67 * hash + Objects.hashCode(this.album);
+        hash = 67 * hash + Objects.hashCode(this.filepath);
+        hash = 67 * hash + this.duration;
+        hash = 67 * hash + this.bitRate;
+        return hash;
     }
 }

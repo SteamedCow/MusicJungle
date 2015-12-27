@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javazoom.jl.decoder.JavaLayerException;
 import musicjungle.data.*;
 import musicjungle.fileHandler.gui.FileHandlerController;
@@ -72,7 +71,6 @@ public class FileHandlerButtonListener implements ActionListener
             if(addedSong.weakEquals(song))
                 exsists = addedSong.weakEquals(song);
         }
-        
         if(!exsists) {
             System.out.println("\nADDED: " + addedSong);
             GameData.songs.add(addedSong);
@@ -82,11 +80,7 @@ public class FileHandlerButtonListener implements ActionListener
     }
 
     private void cancel() {
-        try {
-            GameData.musicPlayer.stop();
-            throw new UnsupportedOperationException("Not supported yet.");
-        } catch (UnsupportedOperationException e) {
-            e.printStackTrace();
-        }  
+        GameData.musicPlayer.stop();
+        JSONHandler.saveSongs(GameData.songs, CodingConstants.JSON_FILEPATH);
     }
 }

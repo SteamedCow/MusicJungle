@@ -1,7 +1,10 @@
 package musicjungle;
 import javax.swing.JFrame;
+import musicjungle.data.CodingConstants;
+import musicjungle.data.GameData;
+import musicjungle.fileHandler.JSONHandler;
 import musicjungle.fileHandler.gui.FileHandlerController;
-import musicjungle.game.gui.GameController;
+import musicjungle.models.Song;
 
 /**
  * MusicJungle
@@ -10,7 +13,13 @@ import musicjungle.game.gui.GameController;
  */
 public class MusicJungle 
 {
-    public static void main(String[] args) {        
+    public static void main(String[] args) {
+        GameData.songs.addAll(JSONHandler.loadSongs(CodingConstants.JSON_FILEPATH));
+        
+        for (Song song : GameData.songs) {
+            System.out.println(song);
+        }
+        
         JFrame frame = new JFrame("TEMP");
 //        GameController controller = new GameController(4, 10);
         FileHandlerController controller = new FileHandlerController();

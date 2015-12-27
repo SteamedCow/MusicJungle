@@ -1,19 +1,14 @@
 package musicjungle.data;
-
 import java.io.File;
+import java.util.Random;
 
 /**
  * Utils
- * @author Lasse
+ * @author SteamedCOw
  * @version 20-12-2015
  */
 public class Utils 
 {
-    /**
-     * Get the extension of a file.
-     * @param f
-     * @return 
-     */
     public static String getFileExtension(File f) {
         String ext = null;
         
@@ -24,5 +19,9 @@ public class Utils
             ext = s.substring(i+1).toLowerCase();
         
         return ext;
+    }
+    
+    public static int getRandomInteger(int minValue, int maxValue) {
+        return new Random().nextInt((maxValue - minValue) + 1) + minValue;
     }
 }

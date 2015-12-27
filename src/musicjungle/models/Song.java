@@ -1,5 +1,4 @@
 package musicjungle.models;
-
 import java.util.Objects;
 
 /**
@@ -20,6 +19,10 @@ public class Song
         this.duration = duration;
         this.bitRate = bitRate;
     }
+    
+    public String toSimpleString() {
+        return artist + " - " + title;
+    }
 
     @Override
     public String toString() {
@@ -31,8 +34,8 @@ public class Song
             return false;
         final Song other = (Song) obj;
         
-        if(!Objects.equals(this.filepath, other.filepath))
-            return false;
+        if(Objects.equals(this.filepath, other.filepath))
+            return true;
         
         return Objects.equals(this.title, other.title) &&
                 Objects.equals(this.album, other.album);

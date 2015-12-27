@@ -1,15 +1,15 @@
-package musicjungle.game.gui;
+package musicjungle.round.gui;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
 
 /**
- * GameView
+ * RoundView
  * @author SteamedCow
  * @version 17-12-2015
  */
-public class GameView extends javax.swing.JPanel 
+public class RoundView extends javax.swing.JPanel 
 {
-    protected GameView() {
+    protected RoundView() {
         initComponents();
     }
     

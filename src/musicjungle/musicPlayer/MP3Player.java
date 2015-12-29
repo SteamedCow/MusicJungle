@@ -2,7 +2,10 @@ package musicjungle.musicPlayer;
 import java.io.*;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
+import musicjungle.data.GameData;
 import musicjungle.models.Song;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 /**
  * MP3Player
@@ -12,6 +15,23 @@ import musicjungle.models.Song;
 public class MP3Player implements Runnable
 {
     private Player player;
+    
+    public void playGuessSFX(boolean correctGuess) throws JavaLayerException {
+        stop();
+        final String path;
+        
+        if(correctGuess)
+            path = GameData.CORRECT_SFX_PATH;
+        else
+            path = GameData.INCORRECT_SFX_PATH;
+        
+        try {
+          final InputStream is = getClass().getResourceAsStream(path);
+          AudioPlayer.player.start(new AudioStream(is));
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+    }
     
     public void play(Song song, int startTime) throws JavaLayerException, IOException {
         final FileInputStream fis = new FileInputStream(song.filepath);

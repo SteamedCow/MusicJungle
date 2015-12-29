@@ -1,4 +1,5 @@
 package musicjungle.round.gui;
+import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JProgressBar;
@@ -20,9 +21,10 @@ public final class RoundModel implements Runnable
     private int roundTime;
     private SongButton[] buttons;
     private JProgressBar timer;
-    private Song correctSong;
+    private SongButton correctButton;
+    private Thread round;
     
-    private long t0;
+    private long t0, dt;
     private boolean running = true;
 
     protected RoundModel(RoundView view) {
@@ -30,22 +32,27 @@ public final class RoundModel implements Runnable
     }
     
     protected void startRound() {
+        Player.round++;
+        view.setRound(Player.round);
+        timer.setValue(roundTime);
+        setupSongs(getButtonCount());
+        
         setCorrectButton(Utils.getRandomInteger(0, buttons.length - 1));
         
-        Thread round = new Thread(this);
+        running = true;
+        round = new Thread(this);
         round.setDaemon(true);
         t0 = System.currentTimeMillis();
         round.start();
     }
     
     private void setCorrectButton(int index) {
-        final SongButton correctButton = buttons[index];
-        correctSong = correctButton.getSong();
+        final SongButton button = buttons[index];
+        correctButton = button;
         correctButton.setCorrectAnswer(true);
-        System.out.println("Correct song: " + correctSong.toSimpleString());
     }
     
-    protected void newRound(int buttonCount, int roundTime) {
+    protected void setRound(int buttonCount, int roundTime) {
         final int bc;
         if(buttonCount > GameData.MAX_SONG_BUTTON_COUNT)
             bc = GameData.MAX_SONG_BUTTON_COUNT;
@@ -69,9 +76,6 @@ public final class RoundModel implements Runnable
         
         timer = view.getTimer();
         timer.setMaximum(this.roundTime);
-        
-        view.setRound(Player.round);
-        timer.setValue(roundTime);
     }
     
     private void setButtons(int buttonCount) {
@@ -83,7 +87,6 @@ public final class RoundModel implements Runnable
             view.addButton(button);
             buttons[i] = button;
         }
-        setupSongs(buttonCount);
     }
     
     private void setupSongs(int buttonCount) {
@@ -95,8 +98,11 @@ public final class RoundModel implements Runnable
             button = buttons[i];
             song = randomSongs.get(i);
             
+            button.setBackground(null);
+            button.setCorrectAnswer(false);
             button.setSong(song);
             button.setText(song.artist + " - " + song.title);
+            button.setEnabled(true);
         }
     }
     
@@ -107,8 +113,9 @@ public final class RoundModel implements Runnable
     @Override
     public void run() {
         try {
-            long t, dt;
-            musicPlayer.play(correctSong, Utils.getRandomInteger(10, correctSong.duration - 10 - GameData.ROUND_TIME));
+            long t;
+            final Song song = correctButton.getSong();
+            musicPlayer.play(song, Utils.getRandomInteger(10, song.duration - 10 - GameData.ROUND_TIME));
             
             while(running) {
                 t = System.currentTimeMillis();
@@ -128,5 +135,31 @@ public final class RoundModel implements Runnable
         } catch (JavaLayerException | IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    void stopRound() {
+        running = false;
+        for (SongButton button : buttons) {
+            button.setEnabled(false);
+        }
+    }
+
+    void guess(SongButton button) {
+        final boolean isCorrect = button.isCorrectAnswer();
+        
+        try {
+            new MP3Player().playGuessSFX(isCorrect);
+        } catch (JavaLayerException ex) {
+            ex.printStackTrace();
+        }
+        
+        if (isCorrect) {
+            Player.score += (roundTime - dt) / 1000 + 1;
+            view.setScore(Player.score);
+        }
+        else
+            button.setBackground(Color.red);
+        
+        correctButton.setBackground(Color.green);
     }
 }

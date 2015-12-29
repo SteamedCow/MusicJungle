@@ -1,5 +1,7 @@
 package musicjungle.round.gui;
 import javax.swing.JPanel;
+import javazoom.jl.decoder.JavaLayerException;
+import musicjungle.models.SongButton;
 
 /**
  * RoundController
@@ -20,11 +22,19 @@ public class RoundController
         return view;
     }
     
-    public static void newRound(int buttonCount, int roundTime) {
-        model.newRound(buttonCount, roundTime*1000);
+    public static void setRound(int buttonCount, int roundTime) {
+        model.setRound(buttonCount, roundTime*1000);
     }
     
-    public static void startRound() {
+    public static void newRound() {
         model.startRound();
+    }
+    
+    public static void stopRound() {
+        model.stopRound();
+    }
+    
+    public static void guess(SongButton button) {
+        model.guess(button);
     }
 }

@@ -1,6 +1,8 @@
 package musicjungle.round.gui;
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
+import musicjungle.data.GUIData;
 
 /**
  * RoundView
@@ -11,6 +13,10 @@ public class RoundView extends javax.swing.JPanel
 {
     protected RoundView() {
         initComponents();
+        
+        final Color bgrColor = GUIData.BACKGROUND_COLOR;
+        this.setBackground(bgrColor);
+        jPanelVPWindow.setBackground(bgrColor);
     }
     
     protected void addButton(JButton button) {
@@ -23,6 +29,10 @@ public class RoundView extends javax.swing.JPanel
     
     protected void setRound(int round) {
         jLabelRound.setText("" + round);
+    }
+    
+    protected void setScore(int score) {
+        jLabelScore.setText("" + score);
     }
     
     @SuppressWarnings("unchecked")

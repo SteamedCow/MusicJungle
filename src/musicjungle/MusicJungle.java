@@ -1,6 +1,7 @@
 package musicjungle;
 import javax.swing.JFrame;
 import musicjungle.data.*;
+import musicjungle.fileHandler.gui.FileHandlerController;
 import musicjungle.round.gui.RoundController;
 
 /**
@@ -17,7 +18,7 @@ public class MusicJungle
                 
         final JFrame frame = new JFrame("TEMP");
         final RoundController controller = new RoundController();
-//        FileHandlerController controller = new FileHandlerController();
+//        final FileHandlerController controller = new FileHandlerController();
         
         frame.setSize(500, 500);
         frame.setLocationRelativeTo(null);

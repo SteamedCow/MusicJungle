@@ -82,5 +82,6 @@ public class FileHandlerButtonListener implements ActionListener
     private void cancel() {
         GameData.musicPlayer.stop();
         JSONHandler.saveSongs(GameData.songs, CodingConstants.JSON_FILEPATH);
+        System.out.println("List saved");
     }
 }

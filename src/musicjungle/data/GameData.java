@@ -13,6 +13,7 @@ public class GameData
     public static final int MAX_SONG_BUTTON_COUNT = 9;
     public static final int MIN_SONG_BUTTON_COUNT = 2;
     public static final int SONG_BUTTON_COUNT = 4;
+    public static final int ROUNDS = 10;
     public static final int ROUND_TIME = 10;
     public static final int MAX_ROUND_TIME = 300 * 1000;
     public static final int MIN_ROUND_TIME = 1 * 1000;

@@ -40,7 +40,7 @@ public class MP3Player implements Runnable
         bis.skip(skipBytes);
         start(bis);
         
-        Thread playMusic = new Thread(this);
+        final Thread playMusic = new Thread(this);
         playMusic.setDaemon(true);
         playMusic.start();
     }

@@ -45,9 +45,9 @@ public class RoundView extends javax.swing.JPanel
         jLabelScoreTitle = new javax.swing.JLabel();
         jLabelScore = new javax.swing.JLabel();
         jPanelVPWindow = new javax.swing.JPanel();
-        jProgressBarTimer = new javax.swing.JProgressBar();
         jPanelVPButtons = new javax.swing.JPanel();
         jButtonExit = new javax.swing.JButton();
+        jProgressBarTimer = new javax.swing.JProgressBar();
 
         jLabelTitle.setText("Title");
 
@@ -59,25 +59,25 @@ public class RoundView extends javax.swing.JPanel
 
         jLabelScore.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jProgressBarTimer.setMaximum(1000);
-        jProgressBarTimer.setValue(1000);
+        jPanelVPWindow.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanelVPWindowLayout = new javax.swing.GroupLayout(jPanelVPWindow);
         jPanelVPWindow.setLayout(jPanelVPWindowLayout);
         jPanelVPWindowLayout.setHorizontalGroup(
             jPanelVPWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jProgressBarTimer, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+            .addGap(0, 378, Short.MAX_VALUE)
         );
         jPanelVPWindowLayout.setVerticalGroup(
             jPanelVPWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelVPWindowLayout.createSequentialGroup()
-                .addComponent(jProgressBarTimer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 86, Short.MAX_VALUE))
+            .addGap(0, 80, Short.MAX_VALUE)
         );
 
         jPanelVPButtons.setLayout(new java.awt.GridLayout(0, 1));
 
         jButtonExit.setText("Exit");
+
+        jProgressBarTimer.setMaximum(1000);
+        jProgressBarTimer.setValue(1000);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -100,7 +100,8 @@ public class RoundView extends javax.swing.JPanel
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonExit))
                     .addComponent(jPanelVPButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelVPWindow, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelVPWindow, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jProgressBarTimer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -114,9 +115,11 @@ public class RoundView extends javax.swing.JPanel
                     .addComponent(jLabelRound)
                     .addComponent(jLabelRoundTitle))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jProgressBarTimer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelVPWindow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelVPButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                .addComponent(jPanelVPButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonExit)
                 .addContainerGap())

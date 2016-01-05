@@ -42,7 +42,6 @@ public final class RoundModel implements Runnable
         running = true;
         round = new Thread(this);
         round.setDaemon(true);
-        t0 = System.currentTimeMillis();
         round.start();
     }
     
@@ -83,6 +82,8 @@ public final class RoundModel implements Runnable
         for (int i = 0; i < buttonCount; i++) {
             button = new SongButton();
             button.addActionListener(new SongButtonListener());
+            button.setFont(GUIData.SONGBUTTON_FONT);
+            button.setForeground(GUIData.SONGBUTTON_TEXT_COLOR);
             
             view.addButton(button);
             buttons[i] = button;
@@ -113,15 +114,25 @@ public final class RoundModel implements Runnable
     @Override
     public void run() {
         try {
+            timer.setForeground(Color.green);
+            
             long t;
             final Song song = correctButton.getSong();
+            final int midway = roundTime / 3;
+            final int warning = midway * 2;
+            
             musicPlayer.play(song, Utils.getRandomInteger(10, song.duration - 10 - GameData.ROUND_TIME));
+            t0 = System.currentTimeMillis();
             
             while(running) {
                 t = System.currentTimeMillis();
                 dt = t - t0;
                 
                 timer.setValue((int) (roundTime - dt));
+                if(dt > warning)
+                    timer.setForeground(Color.red);
+                else if(dt > midway)
+                    timer.setForeground(Color.yellow);
                 
                 try {
                     Thread.sleep(10);
@@ -154,7 +165,9 @@ public final class RoundModel implements Runnable
         }
         
         if (isCorrect) {
-            Player.score += (roundTime - dt) / 1000 + 1;
+            final int score = (int) (100.0 * timer.getValue() / timer.getMaximum());
+            
+            Player.score += score + 1;
             view.setScore(Player.score);
         }
         else

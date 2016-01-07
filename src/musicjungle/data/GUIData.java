@@ -1,6 +1,7 @@
 package musicjungle.data;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JFrame;
 
 /**
  * GUIData
@@ -9,6 +10,8 @@ import java.awt.Font;
  */
 public class GUIData 
 {
+    public static final JFrame FRAME = new JFrame();
+    
     public static final Color BACKGROUND_COLOR = new Color(175, 200, 255);
     public static final Color SONGBUTTON_TEXT_COLOR = new Color(0, 125, 75);
     

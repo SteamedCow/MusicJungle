@@ -1,6 +1,9 @@
 package musicjungle.round.gui;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javazoom.jl.decoder.JavaLayerException;
+import musicjungle.data.FrameController;
 import musicjungle.models.SongButton;
 
 /**
@@ -15,6 +18,9 @@ public class RoundController
 
     public RoundController() {
         view = new RoundView();
+        
+        view.addExitListener(new ExitListener());
+        
         model = new RoundModel(view);
     }
     
@@ -36,5 +42,13 @@ public class RoundController
     
     public static void guess(SongButton button) {
         model.guess(button);
+    }
+}
+
+class ExitListener implements ActionListener 
+{
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        FrameController.gotoPanel(FrameController.ADD_SONG_SCREEN);
     }
 }

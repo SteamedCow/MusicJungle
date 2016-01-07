@@ -148,14 +148,14 @@ public final class RoundModel implements Runnable
         }
     }
 
-    void stopRound() {
+    protected void stopRound() {
         running = false;
         for (SongButton button : buttons) {
             button.setEnabled(false);
         }
     }
 
-    void guess(SongButton button) {
+    protected void guess(SongButton button) {
         final boolean isCorrect = button.isCorrectAnswer();
         
         try {

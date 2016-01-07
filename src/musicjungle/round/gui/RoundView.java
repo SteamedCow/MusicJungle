@@ -1,5 +1,6 @@
 package musicjungle.round.gui;
 import java.awt.Color;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
 import musicjungle.data.GUIData;
@@ -33,6 +34,10 @@ public class RoundView extends javax.swing.JPanel
     
     protected void setScore(int score) {
         jLabelScore.setText("" + score);
+    }
+    
+    protected void addExitListener(ActionListener listener) {
+        jButtonExit.addActionListener(listener);
     }
     
     @SuppressWarnings("unchecked")

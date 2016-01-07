@@ -1,4 +1,5 @@
 package musicjungle;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 import musicjungle.data.*;
 import musicjungle.fileHandler.gui.FileHandlerController;
@@ -13,18 +14,13 @@ public class MusicJungle
 {
     public static void main(String[] args) {
         final Setup setup = new Setup();
-        
-        setup.loadSongs(CodingConstants.JSON_FILEPATH);
-                
-        final JFrame frame = new JFrame("TEMP");
         final RoundController controller = new RoundController();
 //        final FileHandlerController controller = new FileHandlerController();
         
-        frame.setSize(500, 500);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(controller.getPanel());
-        frame.setVisible(true);
+        setup.loadSongs(CodingConstants.JSON_FILEPATH);
+        setup.setFrame("Music Jungle", new Dimension(500, 500), true, null, JFrame.EXIT_ON_CLOSE);
+        
+        FrameController.gotoPanel(controller.getPanel());
         
         RoundController.setRound(GameData.SONG_BUTTON_COUNT, GameData.ROUND_TIME);
         RoundController.newRound();
